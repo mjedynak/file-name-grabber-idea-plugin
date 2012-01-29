@@ -1,5 +1,5 @@
 <idea-plugin version="2" url="https://github.com/mjedynak/File-Name-Grabber">
-    <name>File Name Catcher</name>
+    <name>File Name Grabber</name>
     <description><![CDATA[
       Copies name of the current file to clipboard
       Usage:
