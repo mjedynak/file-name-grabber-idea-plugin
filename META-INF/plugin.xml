@@ -4,7 +4,7 @@
       Copies name of the current file to clipboard
       Usage:
       <ul>
-          <li>SHIFT + C inside a file (shortcut).</li>
+          <li>ALT + CTRL + SHIFT + F inside a file (shortcut).</li>
           <li>Edit -> Copy File Name (from Edit menu).</li>
       </ul>
       ]]>
@@ -26,7 +26,7 @@
         <action id="CopyFileName" class="pl.mjedynak.idea.plugins.CopyFileNameToClipboardAction" text="Copy File Name"
                 description="Copies file name to clipboard">
             <add-to-group group-id="CutCopyPasteGroup" anchor="last"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="shift C"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift alt control F"/>
         </action>
     </actions>
 
