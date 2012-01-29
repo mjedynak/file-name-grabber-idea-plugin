@@ -1,0 +1,35 @@
+<idea-plugin version="2" url="https://github.com/mjedynak/File-Name-Grabber">
+    <name>File Name Catcher</name>
+    <description><![CDATA[
+      Copies name of the current file to clipboard
+      Usage:
+      <ul>
+          <li>SHIFT + C inside a file (shortcut).</li>
+          <li>Edit -> Copy File Name (from Edit menu).</li>
+      </ul>
+      ]]>
+    </description>
+    <version>1.0.0</version>
+
+    <vendor email="m.jedynak [at] gmail.com">Michal Jedynak
+    </vendor>
+    <idea-version since-build="8000"/>
+
+    <application-components>
+    </application-components>
+
+    <project-components>
+    </project-components>
+
+    <actions>
+
+        <action id="CopyFileName" class="pl.mjedynak.idea.plugins.CopyFileNameToClipboardAction" text="Copy File Name"
+                description="Copies file name to clipboard">
+            <add-to-group group-id="CutCopyPasteGroup" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift C"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+</idea-plugin>
