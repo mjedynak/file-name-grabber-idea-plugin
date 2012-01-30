@@ -12,10 +12,15 @@ import java.awt.datatransfer.StringSelection;
 
 public class CopyFileNameToClipboardAction extends AnAction implements DumbAware {
     public void actionPerformed(AnActionEvent e) {
-        VirtualFile file = PlatformDataKeys.VIRTUAL_FILE.getData(e.getDataContext());
+        VirtualFile file = e.getData(PlatformDataKeys.VIRTUAL_FILE);
         if (file != null) {
             StringSelection stringSelection = new StringSelection(file.getName());
-            CopyPasteManager.getInstance().setContents(stringSelection);
+            CopyPasteManager instance = getCopyPasteManager();
+            instance.setContents(stringSelection);
         }
+    }
+
+    CopyPasteManager getCopyPasteManager() {
+        return CopyPasteManager.getInstance();
     }
 }
