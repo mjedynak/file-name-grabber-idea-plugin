@@ -33,7 +33,6 @@ class CopyFileNameToClipboardActionTest extends GroovyTestCase {
             }
         }
 
-
         given(event.getData(PlatformDataKeys.VIRTUAL_FILE)).willReturn file
 
         // when
