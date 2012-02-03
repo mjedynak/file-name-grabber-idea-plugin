@@ -1,14 +1,14 @@
 package pl.mjedynak.idea.plugins
 
+import com.intellij.openapi.actionSystem.AnActionEvent
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.runners.MockitoJUnitRunner
 import org.springframework.test.util.ReflectionTestUtils
-import org.mockito.Mock
-import com.intellij.openapi.actionSystem.AnActionEvent
 import static org.mockito.Mockito.verify
-import org.junit.Ignore
 
 @RunWith(MockitoJUnitRunner)
 class CopyFileNameToClipboardActionTest {
@@ -24,8 +24,7 @@ class CopyFileNameToClipboardActionTest {
 
     }
 
-
-    @Ignore
+    @Ignore //http://code.google.com/p/mockito/issues/detail?id=303
     @Test
     void shouldDelegateHandlingActionToFileNameCopier() {
         // when
