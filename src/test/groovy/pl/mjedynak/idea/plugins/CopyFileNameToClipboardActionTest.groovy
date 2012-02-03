@@ -1,44 +1,37 @@
 package pl.mjedynak.idea.plugins
 
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.PlatformDataKeys
-import com.intellij.openapi.ide.CopyPasteManager
-import com.intellij.openapi.vfs.VirtualFile
-import java.awt.datatransfer.StringSelection
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 import org.mockito.runners.MockitoJUnitRunner
-import static org.mockito.BDDMockito.given
-import static org.mockito.Mockito.mock
+import org.springframework.test.util.ReflectionTestUtils
+import org.mockito.Mock
+import com.intellij.openapi.actionSystem.AnActionEvent
 import static org.mockito.Mockito.verify
-import static org.mockito.BDDMockito.*
+import org.junit.Ignore
 
 @RunWith(MockitoJUnitRunner)
-class CopyFileNameToClipboardActionTest extends GroovyTestCase {
+class CopyFileNameToClipboardActionTest {
 
-    CopyFileNameToClipboardAction action
-
+    CopyFileNameToClipboardAction copyFileNameToClipboardAction
+    @Mock FileNameCopier fileNameCopier
     @Mock AnActionEvent event
-    @Mock VirtualFile file
 
+    @Before
+    void setUp() {
+        copyFileNameToClipboardAction = new CopyFileNameToClipboardAction()
+        ReflectionTestUtils.setField(copyFileNameToClipboardAction, "fileNameCopier", fileNameCopier)
+
+    }
+
+
+    @Ignore
     @Test
-    void copies_file_name_when_file_exists() {
-        // given
-        CopyPasteManager copyPasteManager = mock(CopyPasteManager)
-        action = new CopyFileNameToClipboardAction() {
-            @Override
-            CopyPasteManager getCopyPasteManager() {
-                copyPasteManager
-            }
-        }
-
-        given(event.getData(PlatformDataKeys.VIRTUAL_FILE)).willReturn file
-
+    void shouldDelegateHandlingActionToFileNameCopier() {
         // when
-        action.actionPerformed event
+        copyFileNameToClipboardAction.actionPerformed(event)
 
         // then
-        verify(copyPasteManager).setContents any(StringSelection)
+        verify(fileNameCopier).copyFileName(event)
     }
 }
