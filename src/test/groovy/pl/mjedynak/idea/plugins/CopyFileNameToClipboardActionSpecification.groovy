@@ -1,17 +1,20 @@
 package pl.mjedynak.idea.plugins
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import org.springframework.test.util.ReflectionTestUtils
 import spock.lang.Specification
 
 class CopyFileNameToClipboardActionSpecification extends Specification {
 
-    def "delegates handling action to file name copier"() {
-        FileNameCopier fileNameCopier = Mock(FileNameCopier)
-        AnActionEvent event = Mock(AnActionEvent)
-        CopyFileNameToClipboardAction copyFileNameToClipboardAction = new CopyFileNameToClipboardAction()
-        ReflectionTestUtils.setField(copyFileNameToClipboardAction, "fileNameCopier", fileNameCopier)
+    CopyFileNameToClipboardAction copyFileNameToClipboardAction = new CopyFileNameToClipboardAction()
+    FileNameCopier fileNameCopier = Mock(FileNameCopier)
+    AnActionEvent event = Mock(AnActionEvent)
 
+    def setup() {
+        copyFileNameToClipboardAction.fileNameCopier = fileNameCopier
+    }
+
+
+    def "delegates handling action to file name copier"() {
         when:
         copyFileNameToClipboardAction.actionPerformed(event)
 
